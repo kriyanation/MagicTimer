@@ -1,16 +1,15 @@
 import os
+import subprocess
+import sys
 import tkinter as tk
 from tkinter import ttk, StringVar,PhotoImage
-import time,pygame
+import time
 BACKGROUND_LIGHT = "Light"
 BACKGROUND_DARK = "Dark"
 class TimerDisplay(tk.Frame):
     def __init__(self,parent,bg=BACKGROUND_DARK,*args,**kwargs):
         super().__init__(parent,*args,**kwargs)
-        try:
-            pygame.mixer.init()
-        except :
-            print("Audio Device Not Found")
+
 
         self.timer_running_flag = 0
         self.flash_color = 0
@@ -106,9 +105,14 @@ class TimerDisplay(tk.Frame):
             self.timer_minus_button.configure(state="normal")
             self.timer_plus_button.configure(state="normal")
             self.timer_running_flag = 0
-            sound = pygame.mixer.Sound("../images/beep-12.wav")
-            sound.play()
 
+            file_beep_path = os.path.abspath(os.path.join(os.getcwd(), "..", "images", "beep-12.wav"))
+
+            if sys.platform == "win32":
+                os.startfile(file_beep_path)
+            else:
+                opener = "open" if sys.platform == "darwin" else "xdg-open"
+                subprocess.call([opener, file_beep_path])
             return
 
         self.after(60000, self.run_timer)
