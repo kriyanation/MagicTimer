@@ -6,7 +6,7 @@ from tkinter import ttk, StringVar,PhotoImage
 import time
 BACKGROUND_LIGHT = "Light"
 BACKGROUND_DARK = "Dark"
-class TimerDisplay(tk.Frame):
+class TimerDisplay(tk.Toplevel):
     def __init__(self,parent,bg=BACKGROUND_DARK,*args,**kwargs):
         super().__init__(parent,*args,**kwargs)
 
@@ -21,6 +21,8 @@ class TimerDisplay(tk.Frame):
             s.configure('flash.Label', background='dark slate gray', foreground='turquoise', font=('arial', 60, 'bold'))
             s.configure('timer.Label', background='dark slate gray', foreground='peachpuff2',
                         font=('arial', 60, 'bold'))
+            s.configure('minutes.Label', background='dark slate gray', foreground='peachpuff2',
+                        font=('arial', 8, 'bold'))
             s.configure('timer.TButton', background='dark slate gray', foreground='peachpuff2',borderwidth=0)
             s.map('timer.TButton', background=[('pressed', 'peachpuff2'),('active', '!disabled', 'dark green') ],
                   foreground=[('pressed', 'peachpuff2'), ('active', 'dark green')])
@@ -36,12 +38,13 @@ class TimerDisplay(tk.Frame):
 
 
         self.configure(background=bg_color,borderwidth=2,relief=tk.GROOVE)
-        parent.configure(background=bg_color)
+        #parent.configure(background=bg_color)
         self.time_val = StringVar()
         self.minutes_val = StringVar()
         self.minutes_val.set('00')
         self.time_label = ttk.Label(self,textvariable=self.time_val,style="time.Label")
         self.timer_control_label = ttk.Label(self, textvariable=self.minutes_val, style="timer.Label")
+        self.minutes_label = ttk.Label(self, text="in minutes", style="minutes.Label")
         self.image_plus = PhotoImage(file="../images/signs_plus_real.png")
         self.image_minus = PhotoImage(file="../images/signs_minus_real.png")
         self.image_start = PhotoImage(file="../images/power-button.png")
@@ -49,10 +52,15 @@ class TimerDisplay(tk.Frame):
         self.timer_minus_button = ttk.Button(self, text="", image=self.image_minus,style="timer.TButton",command=self.reduct_minutes)
         self.timer_start_button = ttk.Button(self, text="", image=self.image_start,style="timer.TButton",command=self.timer_control)
         self.time_display()
+        self.minutes_label.pack(side=tk.BOTTOM, pady=5, padx=0)
         self.timer_start_button.pack(side=tk.BOTTOM, pady=0,anchor=tk.S)
+
         self.timer_minus_button.pack(side=tk.LEFT,pady = 30)
+
         self.timer_control_label.pack(side=tk.LEFT,pady= 2,padx=10)
         self.timer_plus_button.pack(side=tk.RIGHT, pady = 30)
+
+
 
 
 
