@@ -16,16 +16,16 @@ class TimerDisplay(tk.Toplevel):
         s = ttk.Style()
         s.theme_use('clam')
         if bg == BACKGROUND_DARK:
-            bg_color = 'dark slate gray'
-            s.configure('time.Label', background='dark slate gray', foreground='peachpuff2', font=('arial', 30, 'bold'))
-            s.configure('flash.Label', background='dark slate gray', foreground='turquoise', font=('arial', 60, 'bold'))
-            s.configure('timer.Label', background='dark slate gray', foreground='peachpuff2',
+            bg_color = 'steelblue4'
+            s.configure('time.Label', background='steelblue4', foreground='snow', font=('arial', 30, 'bold'))
+            s.configure('flash.Label', background='steelblue4', foreground='cyan', font=('arial', 60, 'bold'))
+            s.configure('timer.Label', background='steelblue4', foreground='snow',
                         font=('arial', 60, 'bold'))
-            s.configure('minutes.Label', background='dark slate gray', foreground='peachpuff2',
+            s.configure('minutes.Label', background='steelblue4', foreground='snow',
                         font=('arial', 8, 'bold'))
-            s.configure('timer.TButton', background='dark slate gray', foreground='peachpuff2',borderwidth=0)
-            s.map('timer.TButton', background=[('pressed', 'peachpuff2'),('active', '!disabled', 'dark green') ],
-                  foreground=[('pressed', 'peachpuff2'), ('active', 'dark green')])
+            s.configure('timer.TButton', background='steelblue4', foreground='snow',borderwidth=0)
+            s.map('timer.TButton', background=[('pressed', 'steelblue4'),('active', '!disabled', 'cyan') ],
+                  foreground=[('pressed', 'snow'), ('active', 'snow')])
         else:
             bg_color = 'beige'
             s.configure('time.Label', background='beige', foreground='firebrick', font=('arial', 30, 'bold'))
