@@ -16,15 +16,15 @@ class TimerDisplay(tk.Toplevel):
         s = ttk.Style()
         s.theme_use('clam')
         if bg == BACKGROUND_DARK:
-            bg_color = 'steelblue4'
-            s.configure('time.Label', background='steelblue4', foreground='snow', font=('arial', 30, 'bold'))
-            s.configure('flash.Label', background='steelblue4', foreground='cyan', font=('arial', 60, 'bold'))
-            s.configure('timer.Label', background='steelblue4', foreground='snow',
+            bg_color = 'deepskyblue4'
+            s.configure('time.Label', background='deepskyblue4', foreground='snow', font=('arial', 30, 'bold'))
+            s.configure('flash.Label', background='deepskyblue4', foreground='cyan', font=('arial', 60, 'bold'))
+            s.configure('timer.Label', background='deepskyblue4', foreground='snow',
                         font=('arial', 60, 'bold'))
-            s.configure('minutes.Label', background='steelblue4', foreground='snow',
+            s.configure('minutes.Label', background='deepskyblue4', foreground='snow',
                         font=('arial', 8, 'bold'))
-            s.configure('timer.TButton', background='steelblue4', foreground='snow',borderwidth=0)
-            s.map('timer.TButton', background=[('pressed', 'steelblue4'),('active', '!disabled', 'cyan') ],
+            s.configure('timer.TButton', background='deepskyblue4', foreground='snow',borderwidth=0)
+            s.map('timer.TButton', background=[('pressed', 'deepskyblue4'),('active', '!disabled', 'cyan') ],
                   foreground=[('pressed', 'snow'), ('active', 'snow')])
         else:
             bg_color = 'beige'
