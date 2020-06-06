@@ -123,7 +123,7 @@ class TimerDisplay(tk.Toplevel):
                 subprocess.call([opener, file_beep_path])
             return
 
-        self.after(60000, self.run_timer)
+        self.after(60000,self.run_timer)
 
 
 if __name__== "__main__":
